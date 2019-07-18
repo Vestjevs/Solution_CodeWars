@@ -1,6 +1,3 @@
-import com.sun.xml.internal.ws.util.ASCIIUtility;
-import javafx.util.converter.BigDecimalStringConverter;
-import javafx.util.converter.BigIntegerStringConverter;
 
 import java.awt.*;
 import java.lang.reflect.Array;
@@ -1084,14 +1081,25 @@ public class MainTest {
         return str.matches("[^0-9]" + reg);
     }
 
+    public static BigDecimal fibMethod(int k) {
+        BigDecimal sqrt5 = BigDecimal.valueOf(Math.sqrt(5.0));
+        BigDecimal numerator = (new BigDecimal(1).add(sqrt5));
+        BigDecimal phi = numerator.divide(new BigDecimal(2), RoundingMode.CEILING);
+        BigDecimal res = phi.pow(k);
+
+        return res.divide(sqrt5, RoundingMode.CEILING).setScale(0, RoundingMode.CEILING);
+    }
+
+
     public static String factorial(int n) {
         return valueOf(LongStream.range(1, n + 1).reduce(1, (a, b) -> a * b));
     }
 
     public static void main(String[] args) {
         stopwatch stopwatch = new stopwatch();
-        System.out.println(NameValidation("12"));
         System.out.println(stopwatch.elapsedtime());
+        System.out.println(fibMethod(0));
+
 
     }
 }
