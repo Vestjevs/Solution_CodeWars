@@ -7,11 +7,13 @@ import java.text.MessageFormat;
 import java.util.*;
 import java.math.*;
 import java.util.List;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import java.util.stream.*;
 
+import static java.lang.String.format;
 import static java.lang.String.valueOf;
 
 public class MainTest {
@@ -1091,14 +1093,80 @@ public class MainTest {
     }
 
 
+    public static Function<Integer, Integer> getIterator(Function<Integer, Integer> func, int times) {
+        if (times < 2) {
+            return func;
+        } else {
+            return func.andThen(getIterator(func, times - 1));
+        }
+
+    }
+
+    public static List<String> balancedParens(int n) {
+        List<String> list = new ArrayList<>();
+        return list;
+    }
+
+//    public static char[][] getVariations(char[] chars, int length) {
+//        int srcLength = chars.length;
+//        int permutations = (int) Math.pow(srcLength, length);
+//
+//        char[][] variation = new char[permutations][length];
+//
+//        for (int i = 0; i < length; i++) {
+//            int t2 = (int) Math.pow(srcLength, i);
+//            for (int p1 = 0; p1 < permutations; ) {
+//                for (char aChar : chars) {
+//                    for (int p2 = 0; p2 < t2; p2++) {
+//                        variation[p1][i] = aChar;
+//                        p1++;
+//                    }
+//                }
+//            }
+//        }
+//
+//        return variation;
+//    }
+
+    private static boolean check(String str) {
+        return str.matches("(\\)\\)\\(\\()+");
+    }
+
+
     public static String factorial(int n) {
         return valueOf(LongStream.range(1, n + 1).reduce(1, (a, b) -> a * b));
     }
 
     public static void main(String[] args) {
-        stopwatch stopwatch = new stopwatch();
-        System.out.println(stopwatch.elapsedtime());
-        System.out.println(fibMethod(0));
+//        char[] chars = {'(', '(', '(', ')', ')', ')'};
+//        char[] ob = {'(', ')'};
+//        StringBuilder str = new StringBuilder();
+//        List<String> list = new ArrayList<>();
+//        for (char[] s : getVariations(ob, 4)) {
+//            str.append("(");
+//            for (char charS : s) {
+//                str.append(charS);
+//            }
+//            str.append(")");
+//            list.add(str.toString());
+//            str = new StringBuilder();
+//        }
+//        List<String> res = new ArrayList<>();
+//        for (String s : list) {
+//            int l = 0;
+//            int r = 0;
+//            for (int i = 0; i < s.split("").length; i++) {
+//                if (s.split("")[i].equals("(")) {
+//                    l++;
+//                } else {
+//                    r++;
+//                }
+//            }
+//            if(l == r && !s.matches("[()]*(\\)\\)\\(\\()[()]*")){
+//                res.add(s);
+//                System.out.println(s);
+//            }
+//        }
 
 
     }

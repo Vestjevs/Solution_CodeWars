@@ -26,7 +26,7 @@ public class TestRegExp {
         String verticaltab = "[\\v]";
         String regExp2 = "[\\d]";
         String forEmpty ="^$";
-        String ex = "<[Bb]>.*</[Bb]>";
+        String ex = "(-)?[1-9]";
         String text = "<b>asd</b> asdjaldnalksnclkancoid <B>asdas</B>";
         String text2 = "We don't + know. We";
 
